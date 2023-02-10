@@ -1,5 +1,6 @@
 import DisplayPokeList from "./DisplayPokeList";
 import DisplayPokeInfo from "./DisplayPokeInfo";
+import ImportPokeInfo from "./ImportPokeInfo";
 import { useState, useEffect } from "react";
 import "./App.css";
 
@@ -7,42 +8,32 @@ function App() {
   const [showInfo, setShowInfo] = useState(false);
   const [showInfoID, setShowInfoID] = useState(0);
   const [pokemons, setPokemons] = useState([]);
+  const [isImportingData, setIsImportingData] = useState(false);
   let temp = true;
 
   // Fetch initial data on mount
   useEffect(() => {
-    if (temp) {
-      fetch("http://localhost:3000/pokemons")
-        .then((response) => response.json())
-        .then((data) => {
-          data.sort((a, b) => {
-            return a.id - b.id;
-          });
-          setPokemons(data);
-        });
-    }
-    temp = false;
-    importPokeInfo(1);
-  }, []);
-
-  const importPokeInfo = (id) => {
-    const found = pokemons.find(item => item.id === id);
-    let pokeData = {};
-
-    if (!found) {
-      fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+    console.log("App.js Fetch");
+    fetch("http://localhost:3000/pokemons")
       .then((response) => response.json())
       .then((data) => {
-        pokeData.id = data.id;
-        pokeData.name = data.name;
+        data.sort((a, b) => {
+          return a.id - b.id;
+        });
+        // setIsImportingData(true);
+        setPokemons(data);
       });
-    }
-
-    console.log(pokeData);
-  }
+  }, []);
 
   return (
     <div className="App">
+      {isImportingData && (
+        <ImportPokeInfo
+          pokemons={pokemons}
+          setPokemons={setPokemons}
+          maxCount={150}
+        />
+      )}
       <h1 className="text-center mt-5 mb-5">Pokedex</h1>
       <DisplayPokeList
         pokemons={pokemons}

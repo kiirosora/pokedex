@@ -17,7 +17,9 @@ function DisplayPokeInfo({ pokemons, setShowInfo, showInfoID }) {
         });
     } */
     if (pokemons.length)
-      setPokemon(pokemons[pokemons.findIndex((item) => item.id == showInfoID)]);
+      setPokemon(
+        pokemons[pokemons.findIndex((item) => item.id === showInfoID)]
+      );
   }, []);
 
   const unmountComponent = () => {
