@@ -22,7 +22,24 @@ function App() {
         });
     }
     temp = false;
+    importPokeInfo(1);
   }, []);
+
+  const importPokeInfo = (id) => {
+    const found = pokemons.find(item => item.id === id);
+    let pokeData = {};
+
+    if (!found) {
+      fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        pokeData.id = data.id;
+        pokeData.name = data.name;
+      });
+    }
+
+    console.log(pokeData);
+  }
 
   return (
     <div className="App">
