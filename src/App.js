@@ -31,7 +31,7 @@ function App() {
         <ImportPokeInfo
           pokemons={pokemons}
           setPokemons={setPokemons}
-          maxCount={150}
+          maxCount={151}
         />
       )}
       <h1 className="text-center mt-5 mb-5">Pokedex</h1>

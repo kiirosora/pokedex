@@ -10,7 +10,7 @@ function DisplayPokeList({ pokemons, setShowInfo, setShowInfoID }) {
         >
           <img
             className="card-img-top"
-            src={pokemon.sprites["front_default"]}
+            src={pokemon.sprites.other["official-artwork"]["front_default"]}
             alt="pokemon sprite"
           />
           <div className="card-body">

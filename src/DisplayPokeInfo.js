@@ -34,7 +34,11 @@ function DisplayPokeInfo({ pokemons, setShowInfo, showInfoID }) {
             <div className="col-md-4">
               <img
                 className="card-img"
-                src={pokemon.sprites ? pokemon.sprites["front_default"] : null}
+                src={
+                  pokemon.sprites
+                    ? pokemon.sprites.other["official-artwork"]["front_default"]
+                    : null
+                }
               />
             </div>
             <div className="col">
@@ -42,10 +46,12 @@ function DisplayPokeInfo({ pokemons, setShowInfo, showInfoID }) {
                 <h1 className="card-title">
                   [{pokemon.id}] {pokemon.name}
                 </h1>
-                <h5 className="card-subtitle text-muted">
+                <h5 className="card-subtitle text-muted mt-3">
                   Type:
                   {pokemon.types
-                    ? pokemon.types.map((type) => " " + type.type.name)
+                    ? pokemon.types.map((type) => (
+                        <span className={type.type.name}>{type.type.name}</span>
+                      ))
                     : null}
                 </h5>
                 {console.log(pokemon)}

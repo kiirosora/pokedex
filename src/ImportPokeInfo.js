@@ -12,18 +12,21 @@ function ImportPokeInfo({ pokemons, setPokemons, maxCount }) {
 
       if (!found) {
         promises.push(fetch(url).then((res) => res.json()));
-      } else {
-        console.log("exists");
       }
     }
 
     Promise.all(promises).then((results) => {
       results.map((data) => {
         const pokeData = {};
+        // console.log(data);
         pokeData.id = data.id;
         pokeData.name = data.name;
         pokeData.sprites = {};
         pokeData.sprites["front_default"] = data.sprites["front_default"];
+        pokeData.sprites["other"] = {};
+        pokeData.sprites["other"]["official-artwork"] = {};
+        pokeData.sprites["other"]["official-artwork"]["front_default"] =
+          data.sprites["other"]["official-artwork"]["front_default"];
         pokeData.types = data.types;
         console.log(`Added: ${pokeData.name}`);
         pokeList.push(pokeData);
