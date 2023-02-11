@@ -10,4 +10,12 @@
     color: #fff;
     @include util.roundedCorners;
   }
+
+  .type-badge-#{$type} {
+    @extend .type-label-#{$type};
+    img {
+      max-height: 20px;
+      margin: -3px 5px 0px 0px;
+    }
+  }
 }

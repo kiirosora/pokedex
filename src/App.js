@@ -8,6 +8,7 @@ function App() {
   const [showInfo, setShowInfo] = useState(false);
   const [showInfoID, setShowInfoID] = useState(0);
   const [pokemons, setPokemons] = useState([]);
+  const [filters, setFilters] = useState([])
   const [isImportingData, setIsImportingData] = useState(false);
 
   // Fetch initial data on mount
