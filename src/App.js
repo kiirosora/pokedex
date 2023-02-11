@@ -2,14 +2,13 @@ import DisplayPokeList from "./DisplayPokeList";
 import DisplayPokeInfo from "./DisplayPokeInfo";
 import ImportPokeInfo from "./ImportPokeInfo";
 import { useState, useEffect } from "react";
-import "./App.css";
+import "./App.scss";
 
 function App() {
   const [showInfo, setShowInfo] = useState(false);
   const [showInfoID, setShowInfoID] = useState(0);
   const [pokemons, setPokemons] = useState([]);
   const [isImportingData, setIsImportingData] = useState(false);
-  let temp = true;
 
   // Fetch initial data on mount
   useEffect(() => {

@@ -1,13 +1,10 @@
-import { useState, useEffect } from "react";
-
 function ImportPokeInfo({ pokemons, setPokemons, maxCount }) {
-  let counter = 1;
   const promises = [];
   const pokeList = pokemons;
 
   const importPokeInfo = () => {
     for (let id = 1; id <= maxCount; id++) {
-      const found = pokeList.find((item) => item.id == id);
+      const found = pokeList.find((item) => item.id === id);
       const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
 
       if (!found) {
@@ -31,6 +28,7 @@ function ImportPokeInfo({ pokemons, setPokemons, maxCount }) {
         console.log(`Added: ${pokeData.name}`);
         pokeList.push(pokeData);
         savePokeInfo(pokeData);
+        return null;
       });
     });
     //}
@@ -55,9 +53,6 @@ function ImportPokeInfo({ pokemons, setPokemons, maxCount }) {
       });
   };
 
-  /* for (let i = 1; i <= maxCount; i++) {
-    importPokeInfo(i);
-  } */
   importPokeInfo();
 
   return null;

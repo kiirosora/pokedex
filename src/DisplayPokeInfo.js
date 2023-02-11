@@ -20,6 +20,7 @@ function DisplayPokeInfo({ pokemons, setShowInfo, showInfoID }) {
       setPokemon(
         pokemons[pokemons.findIndex((item) => item.id === showInfoID)]
       );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const unmountComponent = () => {
@@ -39,6 +40,7 @@ function DisplayPokeInfo({ pokemons, setShowInfo, showInfoID }) {
                     ? pokemon.sprites.other["official-artwork"]["front_default"]
                     : null
                 }
+                alt={pokemon.name}
               />
             </div>
             <div className="col">
