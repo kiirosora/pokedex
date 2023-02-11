@@ -1,4 +1,13 @@
-.fire {
-  background: #EE8130;
-  color: #fff;
+@use "typeColors" as tc;
+@use "utilities" as util;
+
+@each $type, $color in tc.$type-colors {
+  .#{$type} {
+    padding: 3px 5px 5px;
+    margin: 0px 3px;
+    display: inline-block;
+    background: $color;
+    color: #fff;
+    @include util.roundedCorners;
+  }
 }
