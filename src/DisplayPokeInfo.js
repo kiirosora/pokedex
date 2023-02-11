@@ -52,7 +52,7 @@ function DisplayPokeInfo({ pokemons, setShowInfo, showInfoID }) {
                   Type:
                   {pokemon.types
                     ? pokemon.types.map((type) => (
-                        <span className={type.type.name}>{type.type.name}</span>
+                        <span className={"type-label-" + type.type.name}>{type.type.name}</span>
                       ))
                     : null}
                 </h5>

@@ -2,7 +2,7 @@
 @use "utilities" as util;
 
 @each $type, $color in tc.$type-colors {
-  .#{$type} {
+  .type-label-#{$type} {
     padding: 3px 5px 5px;
     margin: 0px 3px;
     display: inline-block;
