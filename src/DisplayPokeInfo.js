@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import dynamicImporter from "./utilities/Importer"
+import dynamicImporter from "./utilities/Importer";
 import "./DisplayPokeInfo.css";
 
 function DisplayPokeInfo({ pokemons, setShowInfo, showInfoID }) {
@@ -54,11 +54,17 @@ function DisplayPokeInfo({ pokemons, setShowInfo, showInfoID }) {
                   {pokemon.types
                     ? pokemon.types.map((type) => {
                         return (
-                          <span className={"type-badge-" + type.type.name} key={type.type.name}>
-                            <img src={dynamicImporter(type.type.name,"svg")} alt="type"/>
+                          <span
+                            className={"type-badge-" + type.type.name}
+                            key={type.type.name}
+                          >
+                            <img
+                              src={dynamicImporter(type.type.name, "svg")}
+                              alt="type"
+                            />
                             {type.type.name}
                           </span>
-                        )
+                        );
                       })
                     : null}
                 </h5>
