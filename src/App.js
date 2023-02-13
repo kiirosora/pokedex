@@ -15,18 +15,19 @@ function App() {
   // Fetch initial data on mount
   useEffect(() => {
     console.log("App.js Fetch");
-    fetch("http://localhost:3000/pokemons?_sort=id")
+    // fetch("http://localhost:3000/pokemons?_sort=id")
+    fetch("https://kiirosora.github.io/pokedex/poke.json")
       .then((response) => response.json())
       .then((data) => {
-        /* data.sort((a, b) => {
+        data.pokemons.sort((a, b) => {
           return a.id - b.id;
-        }); */
+        });
         // setIsImportingData(true);
-        setPokemons(data);
+        setPokemons(data.pokemons);
       });
   }, []);
 
-console.log(filters);
+  // console.log(filters);
 
   return (
     <div className="App">

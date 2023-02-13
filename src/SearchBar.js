@@ -15,7 +15,7 @@ function SearchBar({ setFilters }) {
 
   return (
     <div id="search-bar" className="container text-center">
-        <input id="search" type="text" onChange={(e) => setName(e.target.value)}/>
+        <input id="search" type="text" onChange={(e) => setName(e.target.value)} placeholder="Search"/>
     </div>
   )
 }
