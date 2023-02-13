@@ -4,19 +4,8 @@ import "./DisplayPokeInfo.css";
 
 function DisplayPokeInfo({ pokemons, setShowInfo, showInfoID }) {
   const [pokemon, setPokemon] = useState({});
-  // let temp = true;
 
   useEffect(() => {
-    /* if (temp) {
-      temp = false;
-      fetch(`http://localhost:3000/pokemons/${showInfoID}`)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          setPokemon(data);
-          temp = true;
-        });
-    } */
     if (pokemons.length)
       setPokemon(
         pokemons[pokemons.findIndex((item) => item.id === showInfoID)]

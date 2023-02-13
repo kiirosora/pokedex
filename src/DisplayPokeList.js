@@ -1,6 +1,19 @@
-import "./DisplayPokeList.css";
+import { useEffect, useState } from "react";
+import "./DisplayPokeList.scss";
 
-function DisplayPokeList({ pokemons, setShowInfo, setShowInfoID }) {
+function DisplayPokeList({ pokemons, filters, setShowInfo, setShowInfoID }) {
+  const [filteredPoke, setFilteredPoke] = useState([]);
+
+  useEffect(() => {
+    let result = pokemons;
+    if (filters.name !== undefined && filters.name !== "") {
+      result = pokemons.filter(pokemon => {
+        return pokemon.name.toLowerCase().includes(filters.name.toLowerCase());
+      });
+    }
+    setFilteredPoke(result);
+  }, [pokemons, filters]);
+
   const displayPokeGrid = (pokemon) => {
     return (
       <div className="col-3" key={pokemon.id}>
@@ -31,7 +44,14 @@ function DisplayPokeList({ pokemons, setShowInfo, setShowInfoID }) {
   return (
     <div id="poke-list">
       <div id="poke-grid" className="container mt-3 mb-3">
-        <div className="row gx-3 gy-3">{pokemons.map(displayPokeGrid)}</div>
+        {filteredPoke.length ?
+          <div className="row gx-3 gy-3">
+            {filteredPoke.map(displayPokeGrid)}
+          </div>:
+          <div className="row gx-3 gy-3 justify-content-md-center">
+            <div className="col-4 text-center">No Results</div>
+          </div>
+        }
       </div>
     </div>
   );
