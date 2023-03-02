@@ -43,10 +43,10 @@ function DisplayPokeList({
     );
   };
 
-  const showPokeInfo = (pokeID) => {
+  /* const showPokeInfo = (pokeID) => {
     setShowInfoID(pokeID);
     setShowInfo(true);
-  };
+  }; */
 
   return (
     <>
