@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import dynamicImporter from "./utilities/Importer";
-import "./DisplayPokeInfo.css";
+import "./DisplayPokeInfo.scss";
 
 function DisplayPokeInfo({ pokemons, setShowInfo, showInfoID }) {
   const [pokemon, setPokemon] = useState({});
@@ -45,7 +45,7 @@ function DisplayPokeInfo({ pokemons, setShowInfo, showInfoID }) {
                   [{pokemon.id}] {pokemon.name}
                 </h1>
                 <h5 className="card-subtitle text-muted mt-3">
-                  Type:
+                  Type:&nbsp;
                   {pokemon.types
                     ? pokemon.types.map((type) => {
                         return (

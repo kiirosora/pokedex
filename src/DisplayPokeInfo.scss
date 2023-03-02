@@ -1,0 +1,18 @@
+#poke-info {
+  display: flex;
+  align-items: center;
+
+  h1 {
+    text-transform: capitalize;;
+  }
+  
+  .card-img {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background: #ccc;
+  }
+
+  .card-subtitle {
+    text-transform: capitalize;
+  }
+}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Redirect } from "react-router-dom";
 import DisplayPokeList from "./DisplayPokeList";
 import DisplayPokeInfo from "./DisplayPokeInfo";
 import ImportPokeInfo from "./ImportPokeInfo";
@@ -42,7 +42,7 @@ function App() {
       <h1 className="text-center mt-5 mb-5">Pokedex</h1>
       <Routes>
         <Route
-          index
+          path="/"
           element={
             <DisplayPokeList
               pokemons={pokemons}
