@@ -1,11 +1,12 @@
 #poke-list {
+
+  a {
+    color: #333;
+    text-decoration: none;
+  }
+
   .card {
     cursor: pointer;
-
-    a {
-      color: #333;
-      text-decoration: none;
-    }
 
     .card-img-top {
       background: #ccc;

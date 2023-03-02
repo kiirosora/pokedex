@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Redirect } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import DisplayPokeList from "./DisplayPokeList";
 import DisplayPokeInfo from "./DisplayPokeInfo";
+import { Preloader } from "./utilities/Preloader";
 import ImportPokeInfo from "./ImportPokeInfo";
 
 import "./App.scss";
@@ -26,6 +27,7 @@ function App() {
         // setIsImportingData(true);
         setPokemons(data.pokemons);
       });
+    Preloader();
   }, []);
 
   // console.log(filters);
@@ -39,7 +41,9 @@ function App() {
           maxCount={151}
         />
       )}
-      <h1 className="text-center mt-5 mb-5">Pokedex</h1>
+      <h1 id="title" className="text-center mt-5 mb-5">
+        <Link to="/">Pokedex</Link>
+      </h1>
       <Routes>
         <Route
           path="/"

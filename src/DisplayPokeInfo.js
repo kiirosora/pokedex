@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import dynamicImporter from "./utilities/Importer";
+import { dynamicImporter } from "./utilities/Importer";
 import "./DisplayPokeInfo.scss";
 
 function DisplayPokeInfo({ pokemons, setShowInfo, showInfoID }) {
