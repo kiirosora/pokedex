@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import DisplayPokeList from "./DisplayPokeList";
 import DisplayPokeInfo from "./DisplayPokeInfo";
 import ImportPokeInfo from "./ImportPokeInfo";
-import SearchBar from "./SearchBar";
+
 import "./App.scss";
 
 function App() {
   const [showInfo, setShowInfo] = useState(false);
   const [showInfoID, setShowInfoID] = useState(0);
   const [pokemons, setPokemons] = useState([]);
-  const [filters, setFilters] = useState({})
+  const [filters, setFilters] = useState({});
   const [isImportingData, setIsImportingData] = useState(false);
 
   // Fetch initial data on mount
@@ -39,20 +40,32 @@ function App() {
         />
       )}
       <h1 className="text-center mt-5 mb-5">Pokedex</h1>
-      <SearchBar setFilters={setFilters}/>
-      <DisplayPokeList
-        pokemons={pokemons}
-        filters={filters}
-        setShowInfo={setShowInfo}
-        setShowInfoID={setShowInfoID}
-      />
-      {showInfo && (
-        <DisplayPokeInfo
-          pokemons={pokemons}
-          setShowInfo={setShowInfo}
-          showInfoID={showInfoID}
+      <Routes>
+        <Route
+          index
+          element={
+            <DisplayPokeList
+              pokemons={pokemons}
+              filters={filters}
+              setFilters={setFilters}
+              setShowInfo={setShowInfo}
+              setShowInfoID={setShowInfoID}
+            />
+          }
         />
-      )}
+        <Route
+          path="/:pokeId"
+          element={
+            //showInfo && (
+            <DisplayPokeInfo
+              pokemons={pokemons}
+              setShowInfo={setShowInfo}
+              showInfoID={showInfoID}
+            />
+            //)
+          }
+        />
+      </Routes>
     </div>
   );
 }

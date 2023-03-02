@@ -1,24 +1,30 @@
 import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import dynamicImporter from "./utilities/Importer";
 import "./DisplayPokeInfo.css";
 
 function DisplayPokeInfo({ pokemons, setShowInfo, showInfoID }) {
   const [pokemon, setPokemon] = useState({});
+  const { pokeId } = useParams();
+  const navigate = useNavigate();
+  const linkToHome = () => navigate("/");
 
   useEffect(() => {
-    if (pokemons.length)
+    if (pokemons.length) {
       setPokemon(
-        pokemons[pokemons.findIndex((item) => item.id === showInfoID)]
+        pokemons[pokemons.findIndex((item) => item.id === Number(pokeId))]
       );
+      console.log(
+        "useEffect",
+        pokemons,
+        pokemons.findIndex((item) => item.id === pokeId)
+      );
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const unmountComponent = () => {
-    setShowInfo(false);
-  };
+  }, [pokemons]);
 
   return (
-    <div id="poke-info" onClick={unmountComponent}>
+    <div id="poke-info" onClick={linkToHome}>
       <div className="container">
         <div className="card mt-4">
           <div className="row">
@@ -57,7 +63,6 @@ function DisplayPokeInfo({ pokemons, setShowInfo, showInfoID }) {
                       })
                     : null}
                 </h5>
-                {/*console.log(pokemon)*/}
               </div>
             </div>
           </div>
