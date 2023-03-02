@@ -22,7 +22,7 @@ export const Preloader = () => {
 
   pokeElements.forEach((elem) => {
     const img = new Image();
-    img.src = `../assets/svg/${elem}.svg`;
+    img.src = require(`../assets/svg/${elem}.svg`);
   });
 
   console.log("Preload Complete");
